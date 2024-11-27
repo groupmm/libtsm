@@ -30,7 +30,14 @@ def ensure_validity(alpha, syn_hop=128):
     """
     d_ana = np.diff(alpha[:,0])
     d_syn = np.diff(alpha[:,1])
-    not_too_steep = np.pad(np.round(d_syn / d_ana) <= syn_hop, (1,0), constant_values=True)
+    # divide considering d_ana = 0
+    ratio = np.divide(d_syn, d_ana, out=np.ones_like(d_syn, dtype=float) * syn_hop + 1, where=(d_ana != 0))
+    not_too_steep = np.pad(np.round(ratio) <= syn_hop, (1,0), constant_values=True)
+
+    # make sure that the last point is retained (and try to remove the second-to-last instead)
+    if not_too_steep[-1] == False:
+        not_too_steep[-2] = False
+        not_too_steep[-1] = True
 
     # call recursively to remove consecutive points that are too steep
     if not np.all(not_too_steep):
