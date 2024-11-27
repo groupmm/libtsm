@@ -28,17 +28,20 @@ setup(
                       'scipy >= 1.3.0'],
     python_requires='>=3.6',
     extras_require={
-        'dev': [
-                'ipython >= 7.8.0',
-                'jupyter == 1.0.*',
-                'librosa >= 0.8.0',
-                # 'matplotlib >= 3.1.0',
-                # 'numba >= 0.51.0',
-                'nbstripout == 0.4.*'],
-        'tests': ['pytest == 6.2.*',
-                  'librosa >= 0.8.0',
-                  'soundfile >= 0.9.0'],
-        'docs': ['sphinx == 4.0.*',
-                 'sphinx-rtd-theme == 0.5.*'],
+        'dev': [ # required for running the Jupyter notebook `demo_libtsm.ipynb
+            'ipython >= 7.8.0',
+            'jupyter == 1.0.*',
+            'librosa >= 0.8.0',
+            'nbstripout == 0.4.*',
+            'matplotlib >= 3.1.0',
+        ],
+        'test': [
+            'pytest == 6.2.*',
+            'soundfile >= 0.9.0',
+        ],
+        'docs': [
+            'sphinx == 4.0.*',
+            'sphinx-rtd-theme == 0.5.*',
+        ],
     }
 )

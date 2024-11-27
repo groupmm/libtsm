@@ -7,12 +7,11 @@ This file is part of libtsm (https://www.audiolabs-erlangen.de/resources/MIR/202
 
 import numpy as np
 import libtsm
-import librosa
+import soundfile as sf
 
 
 def test_fixed_pitch_shift_even():
-    fn_in = 'data/three_sinusoidals.wav'
-    x, Fs = librosa.load(fn_in, sr=22050)
+    x, Fs = sf.read('data/three_sinusoidals.wav')
 
     p = 1200  # cents
     y_psf1 = libtsm.pitch_shift(x, p, order='res-tsm')[:, 0]
@@ -25,8 +24,7 @@ def test_fixed_pitch_shift_even():
 
 
 def test_fixed_pitch_shift_odd():
-    fn_in = 'data/three_sinusoidals.wav'
-    x, Fs = librosa.load(fn_in, sr=22050)
+    x, Fs = sf.read('data/three_sinusoidals.wav')
 
     p = 1231  # cents
     y_psf1 = libtsm.pitch_shift(x, p, order='res-tsm')[:, 0]
@@ -59,9 +57,7 @@ def test_adaptive_pitch_shift1():
 
 
 def test_adaptive_pitch_shift2():
-    # Load Audio File
-    fn_in = 'data/three_sinusoidals.wav'
-    x, Fs = librosa.load(fn_in, sr=22050)
+    x, Fs = sf.read('data/three_sinusoidals.wav')
 
     # Adaptive Pitch-Shifting (Figure 3)
     t = np.arange(0, len(x) / Fs, 1 / Fs)  # sec
