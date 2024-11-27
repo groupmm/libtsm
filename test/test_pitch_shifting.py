@@ -77,7 +77,7 @@ def test_adaptive_pitch_shift2():
 
 def test_adaptive_pitch_shift3():
     Fs = 48000
-    t = np.linspace(0, 5, int(5*Fs))
+    t = np.arange(int(5*Fs)) / Fs
     x = 0.5 * np.sin(2 * np.pi * 220 * t)
 
     p = np.array([0, 100, 50, -100, 0])
@@ -88,3 +88,19 @@ def test_adaptive_pitch_shift3():
 
     assert len(x) == len(y1)
     assert len(x) == len(y2)
+
+def test_adaptive_pitch_shift_random():
+    Fs = 44100
+    x = np.random.rand(int(5*Fs)) - 0.5
+
+    # try 20 different random trajectories
+    for _ in range(20):
+        N = np.random.randint(1, 250)
+        p = np.random.rand(N) * 1200 - 600
+        t_p = np.linspace(0, 5, N)
+
+        y1 = libtsm.pitch_shift(x, p, t_p, Fs=Fs, order='res-tsm')[:, 0]
+        y2 = libtsm.pitch_shift(x, p, t_p, Fs=Fs, order='tsm-res')[:, 0]
+
+        assert len(x) == len(y1)
+        assert len(x) == len(y2)
