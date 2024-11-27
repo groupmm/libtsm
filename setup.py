@@ -6,12 +6,12 @@ with open('README.md', 'r') as fdesc:
 
 setup(
     name='libtsm',
-    version='1.1.1',
+    version='1.1.2',
     description='Python Package for Time-Scale Modification and Pitch-Shifting',
     author='Sebastian Rosenzweig, Simon Schwär, Jonathan Driedger and Meinard Müller',
     author_email='sebastian.rosenzweig@audiolabs-erlangen.de',
     url='https://www.audiolabs-erlangen.de/resources/MIR/2021-DAFX-AdaptivePitchShifting',
-    download_url='https://github.com/meinardmueller/libtsm/archive/refs/tags/v1.1.0.tar.gz',
+    download_url='https://github.com/meinardmueller/libtsm/archive/refs/tags/v1.1.2.tar.gz',
     packages=find_packages(),
     long_description=long_description,
     long_description_content_type='text/markdown',
@@ -24,19 +24,24 @@ setup(
     ],
     keywords=['audio', 'music', 'tsm', 'pitch-shifting'],
     license='MIT',
-    install_requires=['ipython >= 7.8.0',
-                      'librosa >= 0.8.0',
-                      'matplotlib >= 3.1.0',
-                      'numba >= 0.51.0',
-                      'numpy >= 1.17.0',
-                      'pysoundfile >= 0.9.0',
+    install_requires=['numpy >= 1.17.0',
                       'scipy >= 1.3.0'],
     python_requires='>=3.6',
     extras_require={
-        'dev': ['jupyter == 1.0.*',
-                'nbstripout == 0.4.*'],
-        'tests': ['pytest == 6.2.*'],
-        'docs': ['sphinx == 4.0.*',
-                 'sphinx-rtd-theme == 0.5.*'],
+        'dev': [ # required for running the Jupyter notebook `demo_libtsm.ipynb
+            'ipython >= 7.8.0',
+            'jupyter == 1.0.*',
+            'librosa >= 0.8.0',
+            'nbstripout == 0.4.*',
+            'matplotlib >= 3.1.0',
+        ],
+        'test': [
+            'pytest == 6.2.*',
+            'soundfile >= 0.9.0',
+        ],
+        'docs': [
+            'sphinx == 4.0.*',
+            'sphinx-rtd-theme == 0.5.*',
+        ],
     }
 )

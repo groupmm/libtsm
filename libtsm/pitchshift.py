@@ -11,7 +11,7 @@ import scipy.signal
 import scipy.interpolate
 from fractions import Fraction as frac
 from .tsm import hps_tsm
-from .utils import normalize_length
+from .utils import ensure_validity, normalize_length
 
 
 def pitch_shift_original(x, n, Fs=22050) -> np.ndarray:
@@ -136,6 +136,8 @@ def pitch_shift(x, p, t_p=None, Fs=22050, order="res-tsm", **kwargs) -> np.ndarr
         # only keep unique indices
         anchor_points = anchor_points[np.unique(anchor_points[:, 1], return_index=True)[1], :]
 
+        anchor_points = ensure_validity(anchor_points)
+
         # Time-Scale Modification
         y_ps = hps_tsm(y_ps, anchor_points, Fs=Fs, **kwargs)
 
@@ -144,6 +146,8 @@ def pitch_shift(x, p, t_p=None, Fs=22050, order="res-tsm", **kwargs) -> np.ndarr
         anchor_points = np.ceil(tau * Fs).astype(int)
         # only keep unique indices
         anchor_points = anchor_points[np.unique(anchor_points[:, 1], return_index=True)[1], :]
+
+        anchor_points = ensure_validity(anchor_points)
 
         # Time-Scale Modification
         y_tsm = hps_tsm(x, anchor_points, Fs=Fs, **kwargs)
