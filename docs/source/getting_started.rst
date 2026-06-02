@@ -4,7 +4,7 @@ Getting Started
 Installation
 ------------
 
-With Python >= 3.6, you can install ``libtsm`` using the Python package manager pip:
+You can install ``libtsm`` using the Python package manager pip:
 
 .. code-block:: bash
 

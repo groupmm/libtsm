@@ -34,7 +34,7 @@ IEEE Signal Processing Letters, 21(1): 105–109, 2014.
 
 ## Installation
 
-With Python >= 3.6, you can install libtsm using the Python package manager pip:
+You can install libtsm using the Python package manager pip:
 
 ```
 pip install libtsm
