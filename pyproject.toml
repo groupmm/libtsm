@@ -1,0 +1,46 @@
+[project]
+name = "libtsm"
+version = "1.2.0"
+description = "Python Package for Time-Scale Modification and Pitch-Shifting"
+readme = { file = "README.md", content-type = "text/markdown" }
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [
+    { name = "Sebastian Rosenzweig, Simon Schwär, Jonathan Driedger and Meinard Müller", email = "sebastian.rosenzweig@audiolabs-erlangen.de" }
+]
+keywords = ["audio", "music", "tsm", "pitch-shifting"]
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python",
+    "Intended Audience :: Developers",
+    "Topic :: Multimedia :: Sound/Audio :: Analysis",
+    "Programming Language :: Python :: 3",
+]
+
+dependencies = [
+    "numpy>=1.17.0",
+    "scipy>=1.3.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "ipython>=7.8.0",
+    "jupyter>=1.0.0",
+    "librosa>=0.8.0",
+    "nbstripout>=0.4.0",
+    "matplotlib>=3.1.0",
+]
+
+test = [
+    "pytest>=6.2.0",
+    "soundfile>=0.9.0",
+]
+
+docs = [
+    "sphinx>=4.0.0",
+    "sphinx-rtd-theme>=0.5.0",
+]
+
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"

@@ -1,3 +1,5 @@
+[![Python package](https://github.com/groupmm/libtsm/actions/workflows/test_pip.yml/badge.svg)](https://github.com/groupmm/libtsm/actions/workflows/test_pip.yml)
+
 # libtsm
 
 A Python toolbox for Time-Scale Modification (TSM) and Pitch-Shifting.
