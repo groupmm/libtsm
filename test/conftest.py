@@ -14,3 +14,7 @@ def pytest_addoption(parser):
 def skip_numerical(request):
     if request.config.getoption("--skip-numerical"):
         pytest.skip()
+
+def pytest_ignore_collect(collection_path, config):
+    if config.getoption("--skip-numerical"):
+        return collection_path.name == "test_numerical.py"

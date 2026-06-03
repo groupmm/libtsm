@@ -1,3 +1,5 @@
+[![Python package](https://github.com/groupmm/libtsm/actions/workflows/test_pip.yml/badge.svg)](https://github.com/groupmm/libtsm/actions/workflows/test_pip.yml)
+
 # libtsm
 
 A Python toolbox for Time-Scale Modification (TSM) and Pitch-Shifting.
@@ -32,7 +34,7 @@ IEEE Signal Processing Letters, 21(1): 105–109, 2014.
 
 ## Installation
 
-With Python >= 3.6, you can install libtsm using the Python package manager pip:
+You can install libtsm using the Python package manager pip:
 
 ```
 pip install libtsm
